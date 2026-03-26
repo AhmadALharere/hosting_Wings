@@ -1,0 +1,30 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h2>{{ career.career_name }}</h2>
+    <p>{{ career.description }}</p>
+
+    <ul class="list-group list-group-flush my-3">
+      <li class="list-group-item">
+        <strong>Positions:</strong> {{ career.positions }}
+      </li>
+      <li class="list-group-item">
+        <strong>Experience Required:</strong> {{ career.experience }} years
+      </li>
+      <li class="list-group-item">
+        <strong>Salary Range:</strong> {{ career.L_salary }} - {{
+        career.U_salary }} USD
+      </li>
+      <li class="list-group-item">
+        <strong>Published:</strong> {{ career.published_at }}
+      </li>
+    </ul>
+
+    <a href="{% url 'company:careers' %}" class="btn btn-secondary mt-3"
+      >Back to Careers</a
+    >
+  </div>
+</div>
+{% endblock %}

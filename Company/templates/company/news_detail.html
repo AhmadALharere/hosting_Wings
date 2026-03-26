@@ -1,0 +1,41 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-lg p-4">
+    <h2>{{ article.title }}</h2>
+    <p class="text-muted">{{ article.article_type }}</p>
+
+    {% if article.image_Label %}
+    <img
+      src="{{ article.image_Label.url }}"
+      class="img-fluid rounded mb-3"
+      alt="{{ article.title }}"
+    />
+    {% endif %}
+
+    <p>{{ article.description }}</p>
+
+    <div class="mt-4">
+      <h5>Gallery</h5>
+      <div class="row">
+        {% for img in article.articleimage_set.all %}
+        <div class="col-md-3 mb-3">
+          <img
+            src="{{ img.image.url }}"
+            class="img-fluid rounded shadow-sm"
+            alt="Extra image"
+          />
+        </div>
+        {% empty %}
+        <p>No additional images available for this article.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <a href="{% url 'company:press_room' %}" class="btn btn-secondary mt-4"
+      >Back to Press Room</a
+    >
+  </div>
+</div>
+{% endblock %}

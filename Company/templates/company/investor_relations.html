@@ -1,0 +1,36 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Investor Relations</h2>
+
+  <div class="row">
+    {% for investor in investors %}
+    <div class="col-md-4 mb-4">
+      <div class="card text-center shadow-sm p-3">
+        {% if investor.icon %}
+        <img
+          src="{{ investor.icon.url }}"
+          class="img-fluid rounded-circle mb-2"
+          width="80"
+          height="80"
+        />
+        {% endif %}
+        <h5 class="card-title">{{ investor.name }}</h5>
+        <p class="card-text">{{ investor.Bio|truncatechars:100 }}</p>
+        {% if investor.report %}
+        <a
+          href="{{ investor.report.url }}"
+          class="btn btn-outline-primary w-100"
+          download
+          >Download Report</a
+        >
+        {% endif %}
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No investors listed yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

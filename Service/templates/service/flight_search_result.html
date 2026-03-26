@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!-- -- -->
+{% block title %}Flight Details{% endblock %}
+<!-- -- -->
+{% block content %}
+<h2>Flight Details</h2>
+{% if flight %}
+<div class="card mt-3">
+  <div class="card-body">
+    <p><strong>Flight Number:</strong> {{ flight.flight_number }}</p>
+    <p><strong>Origin:</strong> {{ flight.origin }}</p>
+    <p><strong>Destination:</strong> {{ flight.destination }}</p>
+    <p><strong>Departure Time:</strong> {{ flight.departure_time }}</p>
+    <p><strong>Arrival Time:</strong> {{ flight.arrival_time }}</p>
+    <p><strong>Status:</strong> {{ status }}</p>
+  </div>
+</div>
+<a href="{% url 'service:flight_status' %}" class="btn btn-secondary mt-3"
+  >Search Again</a
+>
+{% else %}
+<p>No flight found.</p>
+{% endif %} {% endblock %}

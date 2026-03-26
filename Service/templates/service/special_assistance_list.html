@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- -- -->
+{% block title %}Special Assistance{% endblock %}
+<!-- -- -->
+{% block content %}
+<h2>All Special Assistance Services</h2>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Price</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for assist in assistances %}
+    <tr>
+      <td>{{ assist.get_assistance_type_display }}</td>
+      <td>${{ assist.price }}</td>
+      <td>{{ assist.description|default:"-" }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="3" class="text-center">No assistance options available.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

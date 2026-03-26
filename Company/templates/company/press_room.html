@@ -1,0 +1,35 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Press Room</h2>
+
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        {% if article.image_Label %}
+        <img
+          src="{{ article.image_Label.url }}"
+          class="card-img-top"
+          alt="{{ article.title }}"
+        />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ article.title }}</h5>
+          <p class="card-text">{{ article.summary|truncatechars:120 }}</p>
+          <span class="badge bg-info">{{ article.article_type }}</span>
+          <a
+            href="{% url 'company:news_detail' article.id %}"
+            class="btn btn-outline-primary mt-3 w-100"
+            >Read More</a
+          >
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No news or announcements available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Create a New Article</h2>
+
+  <!-- Form for creating a new article -->
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+    class="shadow p-4 rounded bg-light"
+  >
+    {% csrf_token %}
+
+    <!-- Main Article Form -->
+    <div class="mb-3">
+      <label for="id_title" class="form-label">Title</label>
+      {{ article_form.title }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_summary" class="form-label">Summary</label>
+      {{ article_form.summary }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_description" class="form-label">Description</label>
+      {{ article_form.description }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_image_Label" class="form-label">Main Image</label>
+      {{ article_form.image_Label }}
+    </div>
+
+    <div class="mb-3">
+      <label for="id_article_type" class="form-label">Article Type</label>
+      {{ article_form.article_type }}
+    </div>
+
+    <hr />
+
+    <!-- Extra Images -->
+    <div class="mb-3">
+      <label for="id_image" class="form-label">Upload Extra Images</label>
+      {{ image_form.image }}
+      <small class="form-text text-muted"
+        >You can select multiple images.</small
+      >
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Publish Article</button>
+  </form>
+</div>
+{% endblock %}

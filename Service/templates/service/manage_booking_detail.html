@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!-- -- -->
+{% block title %}Booking Details{% endblock %}
+<!-- -- -->
+{% block content %}
+<h2>Booking Details</h2>
+<div class="card mt-3">
+  <div class="card-body">
+    <p><strong>Flight:</strong> {{ booking.flight }}</p>
+    <p><strong>Status:</strong> {{ booking.status }}</p>
+    <p>
+      <strong>Booked On:</strong> {{ booking.booking_date|date:"Y-m-d H:i" }}
+    </p>
+    {% if booking.passport_image %}
+    <p>
+      <strong>Passport:</strong><br />
+      <img src="{{ booking.passport_image.url }}" width="200" />
+    </p>
+    {% endif %}
+    <p>
+      <strong>Travel Conditions Accepted:</strong> {{
+      booking.Travel_conditions_back }}
+    </p>
+  </div>
+</div>
+
+<a
+  href="{% url 'service:check_online' booking.pk %}"
+  class="btn btn-success mt-3"
+  >Check-in Online</a
+>
+{% endblock %}

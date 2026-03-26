@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!-- -- -->
+{% block title %}Service Home{% endblock %}
+<!-- -- -->
+{% block content %}
+<h2>Available Special Assistance Services</h2>
+<div class="row mt-4">
+  {% for assist in assistances %}
+  <div class="col-md-4">
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h5>{{ assist.get_assistance_type_display }}</h5>
+        <p>Price: ${{ assist.price }}</p>
+        <p>{{ assist.description|default:"No description available." }}</p>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No assistance services available yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base1.html' %}
+<!-- -- -->
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Career Opportunities</h2>
+
+  <div class="row">
+    {% for career in careers %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ career.career_name }}</h5>
+          <p class="card-text">{{ career.description|truncatechars:100 }}</p>
+          <p><strong>Positions:</strong> {{ career.positions }}</p>
+          <p>
+            <strong>Salary:</strong> {{ career.L_salary }} - {{ career.U_salary
+            }} USD
+          </p>
+          <a
+            href="{% url 'company:career_detail' career.id %}"
+            class="btn btn-primary w-100"
+            >View Details</a
+          >
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No available career postings right now.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

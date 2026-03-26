@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!-- -- -->
+{% block title %}My Bookings{% endblock %}
+<!-- -- -->
+{% block content %}
+<h2>My Bookings</h2>
+<table class="table table-bordered mt-3">
+  <thead>
+    <tr>
+      <th>Flight</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for booking in bookings %}
+    <tr>
+      <td>{{ booking.flight }}</td>
+      <td>{{ booking.booking_date|date:"Y-m-d H:i" }}</td>
+      <td>{{ booking.status }}</td>
+      <td>
+        <a
+          href="{% url 'service:manage_booking_detail' booking.pk %}"
+          class="btn btn-sm btn-primary"
+          >Details</a
+        >
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4" class="text-center">No bookings found.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
