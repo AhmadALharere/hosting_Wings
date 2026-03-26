@@ -15,8 +15,10 @@ django-filter==25.2
 django-phonenumber-field==8.3.0
 djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
+gunicorn==25.2.0
 idna==3.11
 Markdown==3.10
+packaging==26.0
 phonenumbers==9.0.17
 pillow==12.0.0
 psycopg2-binary==2.9.11
