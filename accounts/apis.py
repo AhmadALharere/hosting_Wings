@@ -102,7 +102,7 @@ class Registration_View(APIView):
             refresh = RefreshToken.for_user(user)
             access_token = str(refresh.access_token)
 
-            response = Response({"message": "Sign in successful"})
+            response = Response({"message": "Sign up successful"})
 
             response.set_cookie(
                 key="access_token",

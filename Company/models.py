@@ -44,11 +44,12 @@ class CareerApplication(models.Model):
     full_name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=50)
-    cv = models.FileField(
-        upload_to="company/careers/applications/cv/",
-        blank=True,
-        null=True,
-        help_text="Uploaded CV file"
+    cv = CloudinaryField(
+    resource_type='raw',
+    folder="WingsAirline/media/Company/cv", 
+    blank=True, 
+    null=True, 
+    help_text="Uploaded CV file"
     )
     message = models.TextField()
     submitted_at = models.DateTimeField(auto_now_add=True)
