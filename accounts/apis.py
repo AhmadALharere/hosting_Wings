@@ -40,7 +40,7 @@ class LoginView(APIView):
             key="access_token",
             value=access_token,
             httponly=True,
-            secure=False,
+            secure=True,
             samesite="None"
         )
 
@@ -48,7 +48,7 @@ class LoginView(APIView):
             key="refresh_token",
             value=str(refresh),
             httponly=True,
-            secure=False,
+            secure=True,
             samesite="None"
         )
 
@@ -108,7 +108,7 @@ class Registration_View(APIView):
                 key="access_token",
                 value=access_token,
                 httponly=True,
-                secure=False,
+                secure=True,
                 samesite="None"
             )
 
@@ -116,7 +116,7 @@ class Registration_View(APIView):
                 key="refresh_token",
                 value=str(refresh),
                 httponly=True,
-                secure=False,
+                secure=True,
                 samesite="None"
             )
 
@@ -149,7 +149,7 @@ class RefreshView(APIView):
                 key="access_token",
                 value=new_access_token,
                 httponly=True,
-                secure=False,
+                secure=True,
                 samesite="None"
             )
 
@@ -157,7 +157,7 @@ class RefreshView(APIView):
                 key="refresh_token",
                 value=new_refresh_token,
                 httponly=True,
-                secure=False,
+                secure=True,
                 samesite="None"
             )
 
@@ -253,7 +253,7 @@ class GoogleLogin(SocialLoginView):
                     "access_token",
                     access,
                     httponly=True,
-                    secure=False,
+                    secure=True,
                     samesite="None"
                 )
 
@@ -261,7 +261,7 @@ class GoogleLogin(SocialLoginView):
                     "refresh_token",
                     refresh,
                     httponly=True,
-                    secure=False,
+                    secure=True,
                     samesite="None"
                 )
 
