@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5%71_wp4q97=*5l5@6vg^qxe5oadyeao@0*(9@v9b5z%8ulr22
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["hosting-wings.onrender.com", "localhost", "127.0.0.1","http://localhost:5173"]
+ALLOWED_HOSTS = ["hosting-wings.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'django_extensions',
+    'corsheaders',
 ]
 SITE_ID = 1
 
@@ -124,7 +125,26 @@ MIDDLEWARE = [
     "accounts.middleware.RefreshTokenMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://hosting-wings.onrender.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "https://hosting-wings.onrender.com",
+]
+
+CSRF_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SAMESITE = "None"
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'project.urls'
 

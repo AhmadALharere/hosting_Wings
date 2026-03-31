@@ -10,6 +10,7 @@ Django==5.2.7
 django-allauth==65.13.0
 django-autocomplete-light==3.12.1
 django-cloudinary-storage==0.3.0
+django-cors-headers==4.9.0
 django-extensions==4.1
 django-filter==25.2
 django-phonenumber-field==8.3.0
@@ -31,4 +32,3 @@ sqlparse==0.5.3
 typing_extensions==4.15.0
 tzdata==2025.2
 urllib3==2.5.0
-whitenoise
