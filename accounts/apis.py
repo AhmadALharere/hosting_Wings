@@ -1,5 +1,6 @@
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 
 from rest_framework import generics 
 from .models import profile
@@ -90,6 +91,9 @@ class LogoutView(APIView):
         return response
 
 class Registration_View(APIView):
+    
+    parser_classes = [JSONParser, MultiPartParser, FormParser]
+    
     def post(self,request):
         
         serializer = CustomRegisterSerializer(data=request.data)
@@ -275,6 +279,7 @@ class GoogleLogin(SocialLoginView):
 
 class profile_info(generics.RetrieveUpdateAPIView):
     
+    parser_classes = [JSONParser, MultiPartParser, FormParser]
     queryset = profile.objects.select_related('user').all()
     serializer_class = Profile_Serializer
     lookup_field='user'
