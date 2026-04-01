@@ -12,8 +12,8 @@ class RefreshTokenMiddleware:
                 key="access_token",
                 value=new_token,
                 httponly=True,
-                secure=True, 
-                samesite="None",
+                secure=False, 
+                samesite="Lax",
             )
 
         return response

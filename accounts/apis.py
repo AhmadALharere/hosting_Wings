@@ -41,16 +41,16 @@ class LoginView(APIView):
             key="access_token",
             value=access_token,
             httponly=True,
-            secure=True,
-            samesite="None"
+            secure=False,
+            samesite="Lax"
         )
 
         response.set_cookie(
             key="refresh_token",
             value=str(refresh),
             httponly=True,
-            secure=True,
-            samesite="None"
+            secure=False,
+            samesite="Lax"
         )
 
         return response
@@ -112,16 +112,16 @@ class Registration_View(APIView):
                 key="access_token",
                 value=access_token,
                 httponly=True,
-                secure=True,
-                samesite="None"
+                secure=False,
+                samesite="Lax"
             )
 
             response.set_cookie(
                 key="refresh_token",
                 value=str(refresh),
                 httponly=True,
-                secure=True,
-                samesite="None"
+                secure=False,
+                samesite="Lax"
             )
 
             return response
@@ -153,16 +153,16 @@ class RefreshView(APIView):
                 key="access_token",
                 value=new_access_token,
                 httponly=True,
-                secure=True,
-                samesite="None"
+                secure=False,
+                samesite="Lax"
             )
 
             response.set_cookie(
                 key="refresh_token",
                 value=new_refresh_token,
                 httponly=True,
-                secure=True,
-                samesite="None"
+                secure=False,
+                samesite="Lax"
             )
 
             return response
@@ -257,16 +257,16 @@ class GoogleLogin(SocialLoginView):
                     "access_token",
                     access,
                     httponly=True,
-                    secure=True,
-                    samesite="None"
+                    secure=False,
+                    samesite="Lax"
                 )
 
                 response.set_cookie(
                     "refresh_token",
                     refresh,
                     httponly=True,
-                    secure=True,
-                    samesite="None"
+                    secure=False,
+                    samesite="Lax"
                 )
 
             response.data = {"message": "Login successful"}
