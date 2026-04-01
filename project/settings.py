@@ -140,11 +140,11 @@ CSRF_TRUSTED_ORIGINS = [
     "https://hosting-wings.onrender.com",
 ]
 
-CSRF_COOKIE_SAMESITE = "None"
-SESSION_COOKIE_SAMESITE = "None"
+CSRF_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = "Lax"
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
 ROOT_URLCONF = 'project.urls'
 
@@ -196,10 +196,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-#to 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
 
 REST_AUTH = {
     "USE_JWT": True,
