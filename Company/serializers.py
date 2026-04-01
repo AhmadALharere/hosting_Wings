@@ -26,7 +26,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Article
-        fields = ['title', 'summary', 'description', 'image', 'published_at']
+        fields = ['title', 'summary', 'description', 'image', 'published_at','article_type']
         
            
     def get_image(self, obj):
