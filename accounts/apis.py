@@ -242,7 +242,7 @@ from dj_rest_auth.registration.views import SocialLoginView
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
     client_class = OAuth2Client
-    callback_url = "http://localhost:8000"
+    callback_url = "https://hosting-wings.onrender.com"
 
     
     def post(self, request, *args, **kwargs):
