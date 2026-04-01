@@ -42,7 +42,7 @@ Genders = (
 
 
 class profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(default="2000-01-01",auto_now=False, auto_now_add=False)
     image = CloudinaryField('image', folder="WingsAirline/media/accounts/profiles",null=True,blank=True)
     phone_number =  PhoneNumberField(blank=True, null=True, region="SY", help_text="your phone number",unique=True)

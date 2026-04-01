@@ -13,7 +13,7 @@ class RefreshTokenMiddleware:
                 value=new_token,
                 httponly=True,
                 secure=True, 
-                samesite="Lax",
+                samesite="None",
             )
 
         return response

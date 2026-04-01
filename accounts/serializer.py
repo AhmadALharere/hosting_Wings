@@ -87,7 +87,6 @@ class Profile_Serializer(serializers.ModelSerializer):
             user = instance.user
             user.first_name = user_data.get('first_name', user.first_name)
             user.last_name = user_data.get('last_name', user.last_name)
-            user.birth_date = validated_data.get('birth_date', instance.birth_date)
             #check if there is an image uploaded then update it (the images on cloudinary) else keep the old one
             user.save()
 

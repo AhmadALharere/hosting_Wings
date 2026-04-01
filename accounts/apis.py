@@ -41,16 +41,16 @@ class LoginView(APIView):
             key="access_token",
             value=access_token,
             httponly=True,
-            secure=False,
-            samesite="Lax"
+            secure=True,
+            samesite="None"
         )
 
         response.set_cookie(
             key="refresh_token",
             value=str(refresh),
             httponly=True,
-            secure=False,
-            samesite="Lax"
+            secure=True,
+            samesite="None"
         )
 
         return response
@@ -112,16 +112,16 @@ class Registration_View(APIView):
                 key="access_token",
                 value=access_token,
                 httponly=True,
-                secure=False,
-                samesite="Lax"
+                secure=True,
+                samesite="None"
             )
 
             response.set_cookie(
                 key="refresh_token",
                 value=str(refresh),
                 httponly=True,
-                secure=False,
-                samesite="Lax"
+                secure=True,
+                samesite="None"
             )
 
             return response
@@ -153,16 +153,16 @@ class RefreshView(APIView):
                 key="access_token",
                 value=new_access_token,
                 httponly=True,
-                secure=False,
-                samesite="Lax"
+                secure=True,
+                samesite="None"
             )
 
             response.set_cookie(
                 key="refresh_token",
                 value=new_refresh_token,
                 httponly=True,
-                secure=False,
-                samesite="Lax"
+                secure=True,
+                samesite="None"
             )
 
             return response
@@ -242,7 +242,7 @@ from dj_rest_auth.registration.views import SocialLoginView
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
     client_class = OAuth2Client
-    callback_url = "https://hosting-wings.onrender.com"
+    callback_url = "http://localhost:5173"
 
     
     def post(self, request, *args, **kwargs):
@@ -258,16 +258,16 @@ class GoogleLogin(SocialLoginView):
                     "access_token",
                     access,
                     httponly=True,
-                    secure=False,
-                    samesite="Lax"
+                    secure=True,
+                    samesite="None"
                 )
 
                 response.set_cookie(
                     "refresh_token",
                     refresh,
                     httponly=True,
-                    secure=False,
-                    samesite="Lax"
+                    secure=True,
+                    samesite="None"
                 )
 
             response.data = {"message": "Login successful"}
@@ -275,6 +275,8 @@ class GoogleLogin(SocialLoginView):
         except OAuth2Error as exc:
             # أي خطأ من Google OAuth2 نصيده هنا
             # نعيد 401 Unauthorized مع رسالة واضحة
+            print("Server Error:", str(exc))
+            raise AuthenticationFailed(detail=f"Server error: {str(e)}")
             raise AuthenticationFailed(detail="Invalid Google access token.") from exc
     
 
