@@ -276,7 +276,7 @@ class GoogleLogin(SocialLoginView):
             # أي خطأ من Google OAuth2 نصيده هنا
             # نعيد 401 Unauthorized مع رسالة واضحة
             print("Server Error:", str(exc))
-            raise AuthenticationFailed(detail=f"Server error: {str(e)}")
+            raise AuthenticationFailed(detail=f"Server error: {str(exc)}")
             raise AuthenticationFailed(detail="Invalid Google access token.") from exc
     
 
