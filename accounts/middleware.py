@@ -12,7 +12,7 @@ class RefreshTokenMiddleware:
                 key="access_token",
                 value=new_token,
                 httponly=True,
-                secure=False, 
+                secure=True, 
                 samesite="Lax",
             )
 

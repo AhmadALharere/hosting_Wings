@@ -247,6 +247,7 @@ class GoogleLogin(SocialLoginView):
     
     def post(self, request, *args, **kwargs):
         try:
+            print(request.data)
             response = super().post(request, *args, **kwargs)
             
             access = response.data.get("access")

@@ -108,14 +108,13 @@ REST_FRAMEWORK = {
 }
 
 
-
+SOCIALACCOUNT_LOGIN_ON_GET = True
 PHONENUMBER_DEFAULT_REGION = "SY"
 PHONENUMBER_DB_FORMAT = "E164"  # التوصية أن تحفظ بصيغة الدولية
 
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,7 +131,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://hosting-wings.onrender.com",
 ]
-CORS_ALLOWED_ALL_ORIGINS = True
+
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
@@ -149,7 +148,7 @@ CORS_ALLOW_METHODS = [
     "OPTIONS",
 ]
 CORS_ALLOW_HEADERS = [
-    "authorization"
+    "authorization",
     "content-type",
     "accept",
     "origin",
@@ -157,7 +156,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-
 CSRF_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SAMESITE = "Lax"
 
