@@ -202,6 +202,7 @@ REST_AUTH = {
     "JWT_AUTH_COOKIE": "access_token",
     "JWT_AUTH_REFRESH_COOKIE": "refresh_token",
 }
+OAUTH_PKCE_ENABLED = True
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
