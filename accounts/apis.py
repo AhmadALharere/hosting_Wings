@@ -130,7 +130,25 @@ class GoogleLogin(SocialLoginView):
     client_class = OAuth2Client
     callback_url = "http://localhost:5173"
 
+    def post(self, request, *args, **kwargs):
+        # 1. ندع المكتبة تقوم بعملها (التحقق من توكن غوغل وإنشاء/تسجيل دخول المستخدم)
+        response = super().post(request, *args, **kwargs)
 
+        # 2. الحصول على كائن المستخدم (User) الذي تم تسجيل دخوله بنجاح
+        user = self.user
+
+        if not user:
+            return Response({"error": "Google Authentication Failed"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        # 3. توليد توكنات SimpleJWT يدوياً لتخطي إعدادات المكتبة الافتراضية
+        refresh = RefreshToken.for_user(user)
+
+        # 4. إرجاع الاستجابة بنفس الشكل الموحد الذي اعتمدناه
+        return Response({
+            "message": "Google Login successful",
+            "access_token": str(refresh.access_token),
+            "refresh_token": str(refresh)
+        }, status=status.HTTP_200_OK)
 
 
 
