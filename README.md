@@ -966,3 +966,32 @@ null
 |---------------------|----------------------------------------------------------------|
 | **404 Not Found**   | `{"detail": "Order not found."}`                               |
 |---------------------|----------------------------------------------------------------|
+
+
+
+
+### 33. Contact Us 
+
+| Property           | Value                                                   |
+|--------------------|---------------------------------------------------------|
+| **URL**            | `/api/home/contact-us`                                  |
+| **Method**         | `POST`                                                  |
+| **Authentication** | Required                                                |
+| **Content-Type**   | None                                                    |
+| **Description**    | `Create user-Contact for current user`                  |
+
+#### Request Body
+
+
+```json
+{"full_name":<str>,"email_address":<str:email>,"booking_number":<int:id|null>,"contact_type":<str>,"message":<str>}
+```
+
+#### Responses
+
+| HTTP Status         | Body                                                           |
+|---------------------|----------------------------------------------------------------|
+| **200 OK**          | `{<Created Object>}`                                           |
+|---------------------|----------------------------------------------------------------|
+| **400 Bad Request** | `{"message": ["This field is required."]}`                     |
+
