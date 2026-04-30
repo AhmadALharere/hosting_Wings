@@ -65,7 +65,7 @@ class Flight_serializer(serializers.ModelSerializer):
     counterpart_airport = serializers.StringRelatedField()
     class Meta:
         model = Flight
-        fields = ['flight_number','type','Economy_Class_Num','Economy_Class_available','Economy_Class_price','Premium_Economy_Num','Premium_Economy_available','Premium_Economy_price','Business_Class_Num','Business_Class_available','Business_Class_price','First_Class_Num','First_Class_Num_available','First_Class_price','counterpart','counterpart_airport','scheduled_departure','scheduled_arrival','gate','status']
+        fields = ['id','flight_number','type','Economy_Class_Num','Economy_Class_available','Economy_Class_price','Premium_Economy_Num','Premium_Economy_available','Premium_Economy_price','Business_Class_Num','Business_Class_available','Business_Class_price','First_Class_Num','First_Class_Num_available','First_Class_price','counterpart','counterpart_airport','scheduled_departure','scheduled_arrival','gate','status']
 
 
 class Flight_serializer_Retrieve(serializers.ModelSerializer):

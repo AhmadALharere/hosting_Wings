@@ -1,5 +1,8 @@
 from django.shortcuts import render
-
+from rest_framework import generics
+from .models import User_Contacts
+from rest_framework.permissions import IsAuthenticated
+from .serializer import  ContactsSerializer
 # Create your views here.
 
 def home_page(request):
@@ -39,3 +42,9 @@ def Cookie_Policy(request):
 
 def Accessibility(request):
     pass
+
+class Contact_us(generics.CreateAPIView):
+    permission_classes = []
+    queryset = User_Contacts.objects.all()
+    serializer_class = ContactsSerializer
+    
